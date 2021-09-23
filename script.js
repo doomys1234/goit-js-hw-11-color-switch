@@ -31,6 +31,7 @@ function startChangeBgColor() {
     const DELAY = 1000;
     isActive = true
     intervalId = setInterval(() => {
+       
         
         console.log("запускаем");
         document.body.style.background = colors[randomIntegerFromInterval(0,colors.length)]
@@ -43,6 +44,7 @@ function startChangeBgColor() {
 function stopChangeBgColor() {
     clearInterval(intervalId)
     console.log("очищаем");
+    isActive = false
 }
 
 
