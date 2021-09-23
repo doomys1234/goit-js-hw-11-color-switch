@@ -8,43 +8,35 @@ const colors = [
 ];
 
 const refs = {
-    btnStart: document.querySelector('button[data-action="start"]'),
-    btnStop: document.querySelector('button[data-action="stop"]')
-}
+  btnStart: document.querySelector('button[data-action="start"]'),
+  btnStop: document.querySelector('button[data-action="stop"]'),
+};
 let intervalId = null;
 let isActive = false;
 
 const randomIntegerFromInterval = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
 };
- 
 
-refs.btnStart.addEventListener("click", startChangeBgColor)
-refs.btnStop.addEventListener("click", stopChangeBgColor)
+refs.btnStart.addEventListener('click', startChangeBgColor);
+refs.btnStop.addEventListener('click', stopChangeBgColor);
 
 function startChangeBgColor() {
+  if (isActive) {
+    return;
+  }
 
-    if (isActive) {
-        return;
-    }
-    
-    const DELAY = 1000;
-    isActive = true
-    intervalId = setInterval(() => {
-       
-        
-        console.log("запускаем");
-        document.body.style.background = colors[randomIntegerFromInterval(0,colors.length)]
-        
-    },DELAY)
-    
-
+  const DELAY = 1000;
+  isActive = true;
+  intervalId = setInterval(() => {
+    console.log('запускаем');
+    document.body.style.background =
+      colors[randomIntegerFromInterval(0, colors.length)];
+  }, DELAY);
 }
 
 function stopChangeBgColor() {
-    clearInterval(intervalId)
-    console.log("очищаем");
-    isActive = false
+  clearInterval(intervalId);
+  console.log('очищаем');
+  isActive = false;
 }
-
-
